@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "datapackinstaller",
+  "version": "${version}",
+  "name": "Datapack Installer",
+  "description": "Allows you to select datapacks, compressed or as a folder, inside a folder during world creation without having to copy them.",
+  "authors": [
+    "UnbreakingGold"
+  ],
+  "contact": {
+    "repo": "https://github.com/MacaylaMarvelous81/DatapackInstaller"
+  },
+  "license": "MIT",
+  "icon": "assets/DatapackInstaller/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "ml.unbreakinggold.datapackinstaller.client.DatapackInstallerClient"
+    ]
+  },
+  "mixins": [
+    "DatapackInstaller.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.2",
+    "fabric": "*",
+    "minecraft": "1.18.2"
+  }
+}
