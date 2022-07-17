@@ -1,4 +1,8 @@
 # Datapack Installer
+[![builds.sr.ht status](https://builds.sr.ht/~macaylamarvelous81/datapack-installer.svg)](https://builds.sr.ht/~macaylamarvelous81/datapack-installer?)
+[![GitHub Actions status](https://github.com/MacaylaMarvelous81/DatapackInstaller/actions/workflows/build.yml/badge.svg)](https://github.com/MacaylaMarvelous81/DatapackInstaller/actions/workflows/build.yml)
+
+
 A Minecraft (Fabric) mod that allows you to put your datapacks in a folder and
 be able to apply them at world creation without copying them to the temporary
 folder or the world folder.  
