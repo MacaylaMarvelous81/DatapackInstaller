@@ -1,3 +1,5 @@
+# This is the build workflow for GitHub Actions.
+
 name: Build
 on: [pull_request, push]
 

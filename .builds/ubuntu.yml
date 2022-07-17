@@ -1,0 +1,10 @@
+image: ubuntu/lts
+arch: amd64
+artifacts:
+  - datapack-installer/artifacts.tar.gz
+shell: false
+tasks:
+  build:
+    cd datapack-installer && ./gradlew build
+  package:
+    cd datapack-installer && tar -czf artifacts.tar.gz build/libs/*
