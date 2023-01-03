@@ -5,7 +5,7 @@
   "name": "Datapack Installer",
   "description": "Allows you to select datapacks, compressed or as a folder, inside a folder during world creation without having to copy them.",
   "authors": [
-    "WardenBypass"
+    "MacaylaMarvelous81"
   ],
   "contact": {
     "repo": "https://git.sr.ht/~macaylamarvelous81/datapack-installer"
@@ -24,6 +24,6 @@
   "depends": {
     "fabricloader": ">=0.14.6",
     "fabric": "*",
-    "minecraft": "1.19"
+    "minecraft": "1.19.3"
   }
 }
