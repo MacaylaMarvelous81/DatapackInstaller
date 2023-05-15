@@ -1,0 +1,59 @@
+name: Publish
+on:
+  push:
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+
+      - v[0-9]+.[0-9]+.[0-9]+-[A-Z]+
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+    with:
+      ref: ${{ github.ref }}
+  publish_mc:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.5.2
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/download-artifact@v3.0.2
+        with:
+          name: Artifacts
+          path: build/libs
+      - name: Determine channel
+        id: channel
+        run: |
+          if [[ ${{ github.ref_name }} == v0.* ]]; then
+            echo "channel=alpha" >> $GITHUB_OUTPUT
+          elif [[ ${{ github.ref_name }} == *-SNAPSHOT ]]; then
+            echo "channel=beta" >> $GITHUB_OUTPUT
+          else
+            echo "channel=release" >> $GITHUB_OUTPUT
+          fi
+        shell: bash
+      - name: Get release notes
+        id: notes
+        run: git tag -l --format='%(contents:body)' $GITHUB_REF_NAME >> changelog.md
+        shell: bash
+      - uses: madhead/read-java-properties@2.0.3
+        id: properties
+        with:
+          file: gradle.properties
+          all: true
+      - uses: Kir-Antipov/mc-publish@v3.2
+        name: Publish
+        with:
+          changelog-file: "changelog.md"
+          name: "Datapack Installer ${{ github.ref_name }}"
+          version: ${{ github.ref_name }}
+          version-type: ${{ steps.channel.outputs.channel }}
+          loaders: |
+            fabric
+          game-versions: |
+            ${{ steps.properties.outputs.minecraft_version }}
+          modrinth-id: N3yT01en
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          github-tag: ${{ github.ref_name }}
+          github-prerelease: ${{ steps.channel.outputs.channel != 'release' }}
+          github-token: ${{ github.token }}
