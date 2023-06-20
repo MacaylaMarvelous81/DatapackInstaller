@@ -21,7 +21,7 @@ public abstract class CreateWorldScreenMixin {
     private void init(CallbackInfo info) {
         Path tempPath = this.getDataPackTempDir();
         try {
-            FileUtils.copyDirectory(DatapackInstallerClient.globalDatapackPath.toFile(), tempPath.toFile());
+            FileUtils.copyDirectory(DatapackInstallerClient.getGlobalDatapackPath().toFile(), tempPath.toFile());
         } catch(IOException exception) {
             exception.printStackTrace();
         }

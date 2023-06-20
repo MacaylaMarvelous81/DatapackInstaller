@@ -9,12 +9,27 @@ import java.nio.file.Path;
 
 @Environment(EnvType.CLIENT)
 public class DatapackInstallerClient implements ClientModInitializer {
-    public static Path globalDatapackPath;
+    private static Path globalDatapackPath;
+
+    public static Path getGlobalDatapackPath() {
+        return globalDatapackPath;
+    }
+
+    private static void setGlobalDatapackPath(Path path) {
+        if (globalDatapackPath != null) {
+            throw new IllegalStateException("Global datapack path already set!");
+        }
+
+        globalDatapackPath = path;
+    }
+
     @Override
     public void onInitializeClient() {
-        globalDatapackPath = FabricLoader.getInstance().getGameDir().resolve("installed_datapacks");
-        if (!globalDatapackPath.toFile().exists()) {
-            globalDatapackPath.toFile().mkdirs();
+        Path path = FabricLoader.getInstance().getGameDir().resolve("installed_datapacks");
+        setGlobalDatapackPath(path);
+
+        if (!path.toFile().exists()) {
+            path.toFile().mkdirs();
         }
     }
 }
