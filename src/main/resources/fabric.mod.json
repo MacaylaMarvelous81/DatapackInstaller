@@ -8,7 +8,7 @@
     "MacaylaMarvelous81"
   ],
   "contact": {
-    "repo": "https://git.sr.ht/~macaylamarvelous81/datapack-installer"
+    "repo": "https://github.com/MacaylaMarvelous81/DatapackInstaller"
   },
   "license": "MIT",
   "icon": "assets/DatapackInstaller/icon.png",
@@ -22,8 +22,8 @@
     "DatapackInstaller.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.14.19",
+    "fabricloader": ">=0.14.21",
     "fabric": "*",
-    "minecraft": "1.19.4"
+    "minecraft": "1.20.1"
   }
 }
