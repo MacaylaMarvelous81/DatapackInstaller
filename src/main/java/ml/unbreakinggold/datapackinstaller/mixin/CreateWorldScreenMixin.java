@@ -15,11 +15,11 @@ import java.nio.file.Path;
 
 @Mixin(CreateWorldScreen.class)
 public abstract class CreateWorldScreenMixin {
-    @Shadow @Nullable protected abstract Path getDataPackTempDir();
+    @Shadow @Nullable protected abstract Path method_29693();
 
-    @Inject(at = @At("HEAD"), method = "openPackScreen")
+    @Inject(at = @At("HEAD"), method = "method_29694")
     private void init(CallbackInfo info) {
-        Path tempPath = this.getDataPackTempDir();
+        Path tempPath = this.method_29693();
         try {
             FileUtils.copyDirectory(DatapackInstallerClient.globalDatapackPath.toFile(), tempPath.toFile());
         } catch(IOException exception) {
