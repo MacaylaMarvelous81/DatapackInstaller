@@ -42,18 +42,18 @@ jobs:
         run: chmod +x ./gradlew
       - name: Build
         run: ./gradlew build
-      - name: Read gradle.properties
-        uses: madhead/read-java-properties@2.0.3
-        id: properties
-        with:
-          file: gradle.properties
-          all: true
+      - name: Determine artifact name
+        id: name
+        run: |
+          BASE_NAME=$(awk -F '=' '/archives_base_name/ { print $2; }' gradle.properties)
+          VERSION=$(awk -F '=' '/mod_version/ { print $2; }' gradle.properties)
+          echo "name=$BASE_NAME-$VERSION.jar" >> $GITHUB_OUTPUT
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v1.3.2
         with:
-          subject-path: build/libs/${{ steps.properties.outputs.archives_base_name }}-${{ steps.properties.outputs.mod_version }}.jar
+          subject-path: build/libs/${{ steps.name.outputs.name }}
       - name: Upload artifact
         uses: actions/upload-artifact@v3.0.0
         with:
           name: Artifacts
-          path: build/libs/${{ steps.properties.outputs.archives_base_name }}-${{ steps.properties.outputs.mod_version }}.jar
+          path: build/libs/${{ steps.name.outputs.name }}
