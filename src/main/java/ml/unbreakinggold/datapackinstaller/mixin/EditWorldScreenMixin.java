@@ -22,8 +22,11 @@ public class EditWorldScreenMixin extends Screen {
         super(title);
     }
 
-    @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/widget/EmptyWidget;<init>(II)V"), method = "<init>")
+    @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/widget/EmptyWidget;<init>(II)V", ordinal = 1), method = "<init>")
     private void addButton(CallbackInfo info) {
         this.layout.add(ButtonWidget.builder(SELECT_DATAPACKS_TEXT, (button) -> {}).width(200).build());
+
+        // Reduce spacing so vanilla buttons remain on screen.
+        this.layout.spacing(1);
     }
 }
