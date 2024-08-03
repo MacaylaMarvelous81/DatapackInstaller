@@ -6,7 +6,6 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.pack.PackScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.GridWidget;
-import net.minecraft.resource.ResourcePackManager;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -16,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
+import java.util.Collection;
 import java.util.function.Supplier;
 
 @Mixin(GameMenuScreen.class)
@@ -32,9 +32,13 @@ public abstract class GameMenuScreenMixin extends Screen {
         if (!this.client.isIntegratedServerRunning() || this.client.getServer().isRemote()) return;
 
         adder.add(this.createButton(DATA_PACK_TEXT, () -> {
-            ResourcePackManager dataPackManager = this.client.getServer().getDataPackManager();
+            return new PackScreen(this.client.getServer().getDataPackManager(), (dataPackManager) -> {
+                Collection<String> enabledProfiles = dataPackManager.getEnabledIds();
 
-            return new PackScreen(dataPackManager, (manager) -> {}, DatapackInstallerClient.MAIN_PATH, DATA_PACK_TEXT);
+                this.client.getServer().reloadResources(enabledProfiles);
+
+                this.client.setScreen(this);
+            }, DatapackInstallerClient.MAIN_PATH, DATA_PACK_TEXT);
         }));
     }
 }
