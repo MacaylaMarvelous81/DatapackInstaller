@@ -4,6 +4,7 @@
   "package": "ml.unbreakinggold.datapackinstaller.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "MinecraftServerAccessor"
   ],
   "client": [
     "CreateWorldScreenMixin",
