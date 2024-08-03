@@ -7,7 +7,7 @@
   ],
   "client": [
     "CreateWorldScreenMixin",
-    "EditWorldScreenMixin"
+    "GameMenuScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
