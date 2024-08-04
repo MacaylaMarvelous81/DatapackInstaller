@@ -1,6 +1,7 @@
-package ml.unbreakinggold.datapackinstaller.mixin;
+package ml.unbreakinggold.datapackinstaller.mixin.client;
 
 import ml.unbreakinggold.datapackinstaller.client.DatapackInstallerClient;
+import ml.unbreakinggold.datapackinstaller.mixin.MinecraftServerAccessor;
 import net.minecraft.client.gui.screen.GameMenuScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.pack.PackScreen;

@@ -16,6 +16,9 @@
   "entrypoints": {
     "client": [
       "ml.unbreakinggold.datapackinstaller.client.DatapackInstallerClient"
+    ],
+    "server": [
+      "ml.unbreakinggold.datapackinstaller.server.DatapackInstallerServer"
     ]
   },
   "mixins": [

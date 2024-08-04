@@ -7,10 +7,13 @@
     "MinecraftServerAccessor"
   ],
   "client": [
-    "CreateWorldScreenMixin",
-    "GameMenuScreenMixin"
+    "client.CreateWorldScreenMixin",
+    "client.GameMenuScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "server": [
+    "server.ServerMainMixin"
+  ]
 }

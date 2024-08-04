@@ -1,4 +1,4 @@
-package ml.unbreakinggold.datapackinstaller.mixin;
+package ml.unbreakinggold.datapackinstaller.mixin.client;
 
 import ml.unbreakinggold.datapackinstaller.client.DatapackInstallerClient;
 import net.minecraft.client.gui.screen.world.CreateWorldScreen;
