@@ -1,27 +1,42 @@
 # Datapack Installer
-A Minecraft (Fabric) mod that allows you to put your datapacks in a folder and
-be able to apply them at world creation without copying them to the temporary
-folder or the world folder.  
-The mod should be installed on the client.
+A Minecraft (Fabric) mod. When installed on the client, data packs put into the
+data pack folder will be available for selection during world creation as well
+as while paused in Singleplayer. When installed on the server, data packs put
+into the data pack folder will be copied to the active world when the server
+starts.
 
-### How does it work?
-It's very simple, all it does is copy the files and folders from the
-installed_datapacks folder inside the game data directory to the temporary
-folder for the datapack selector when creating the world.
+### Advantages
+On the client, this mod works with the ingame resource and data pack selector.
+While creating a world, or while paused in Singleplayer, you can choose which
+data packs to  enable or disable with an interactive screen.
 
-### Why should I use this over other "global datapack" mods?
-This mod supports both compressed datapacks (.zip) and uncompressed datapacks
-(folders), so you won't have trouble with multiple types of datapacks. You also
-get to choose what datapacks to apply during world creation instead of having
-all of the datapacks in the folder applied when you create the world.
+On the server, all that happens is that the data packs are copied from the
+mod's data pack folder to the world data pack folder whenever the server
+starts. If you are switching worlds or deleting them to regenerate often, all
+you will need to do is switch or delete the world, and the data packs will
+carry on if you leave the mod's folder intact.
+
+### Disadvantages
+This mod cannot keep data packs that require feature flags enabled or disabled.
+For example, if you did not create a world with the built-in bundle data pack
+enabled, and you enable the data pack with the mod, the data pack will only be
+temporarily enabled until you quit the world.
 
 ### Usage
-Step-by-step instructions to use this mod.
-1. Insert your desired datapack(s) into .minecraft/installed_datapacks
-   1. If you have started the game with this mod once, it should already be
-   in the game+launcher data directory (.minecraft).
+#### Client
+1. Insert your desired data pack(s) into `datapacks` in the game's data folder
+   1. If you have started the game with this mod installed, it should already
+   be present.
 2. Begin world creation
    1. In the game, click Singleplayer, then click Create New World.
-3. Manage datapacks
-   1. Click the Data Packs button. If you've done everything correctly, the
-   datapacks will appear on the list on the left!
+   2. Alternatively, if you already have a world, open and pause the game.
+3. Manage data packs
+   1. Click the Data Packs button. On later versions, you may need to check
+   the 'More' tab.
+   2. The data packs should be available on the selector!
+#### Server
+1. Insert your desired data pack(s) into `datapacks` in the server data folder.
+   1. This is probably the root, where eula.txt and server.properties are
+   located.
+2. Start the server
+   1. The data packs will be copied to the active world.
