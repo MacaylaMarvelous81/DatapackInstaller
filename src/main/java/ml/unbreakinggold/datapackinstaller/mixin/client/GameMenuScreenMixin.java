@@ -52,7 +52,7 @@ public abstract class GameMenuScreenMixin extends Screen {
             }
 
             return new PackScreen(this.client.getServer().getDataPackManager(), (dataPackManager) -> {
-                Collection<String> enabledProfiles = dataPackManager.getEnabledIds();
+                Collection<String> enabledProfiles = dataPackManager.getEnabledNames();
 
                 this.client.getServer().reloadResources(enabledProfiles);
 
