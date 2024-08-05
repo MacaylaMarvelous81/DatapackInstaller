@@ -18,7 +18,7 @@ public abstract class CreateWorldScreenMixin {
     private static final Logger LOGGER = LogManager.getLogger(CreateWorldScreenMixin.class);
     @Shadow
     @Nullable
-    private Path dataPackTempDir;
+    private Path field_25477;
 
     /**
      * @author Jomar Milan - July 31st, 2024 - Minecraft 1.20.5
@@ -26,10 +26,10 @@ public abstract class CreateWorldScreenMixin {
      */
     @Overwrite
     @Nullable
-    private Path getDataPackTempDir() {
-        this.dataPackTempDir = DatapackInstallerClient.MAIN_PATH;
+    public Path method_29693() {
+        this.field_25477 = DatapackInstallerClient.MAIN_PATH;
 
-        return this.dataPackTempDir;
+        return this.field_25477;
     }
 
     /**
@@ -37,7 +37,7 @@ public abstract class CreateWorldScreenMixin {
      * @reason Because dataPackTempDir is now persistent and not temporary, the directory should no longer be cleared.
      */
     @Overwrite
-    private void clearDataPackTempDir() {
+    private void method_29695() {
         LOGGER.info("Suppressing attempt to clear data pack directory");
     }
 }

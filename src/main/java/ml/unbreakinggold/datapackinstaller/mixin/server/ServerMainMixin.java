@@ -26,7 +26,7 @@ public class ServerMainMixin {
     @Unique
     private static final Logger LOGGER = LogManager.getLogger(ServerMainMixin.class);
 
-    @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/resource/VanillaDataPackProvider;createManager(Lnet/minecraft/world/level/storage/LevelStorage$Session;)Lnet/minecraft/resource/ResourcePackManager;"), method = "main")
+    @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/resource/ResourcePackManager;<init>(Lnet/minecraft/resource/ResourcePackProfile$Factory;[Lnet/minecraft/resource/ResourcePackProvider;)V"), method = "main")
     private static void onMain(CallbackInfo ci, @Local LevelStorage.Session session) {
         Path worldDataPackPath = session.getDirectory(WorldSavePath.DATAPACKS);
         File worldDataPackDir = worldDataPackPath.toFile();
