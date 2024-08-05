@@ -4,11 +4,16 @@
   "package": "ml.unbreakinggold.datapackinstaller.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "MinecraftServerAccessor"
   ],
   "client": [
-    "CreateWorldScreenMixin"
+    "client.CreateWorldScreenMixin",
+    "client.GameMenuScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "server": [
+    "server.ServerMainMixin"
+  ]
 }

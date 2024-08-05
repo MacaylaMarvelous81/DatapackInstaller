@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.2-SNAPSHOT'
+    id 'fabric-loom' version '1.7-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -74,5 +74,21 @@ publishing {
         // Notice: This block does NOT have the same function as the block in the top level.
         // The repositories here will be used for publishing your artifact, not for
         // retrieving dependencies.
+    }
+}
+
+loom {
+    runs {
+        client {
+            client()
+
+            runDir = "run/client"
+        }
+
+        server {
+            server()
+
+            runDir = "run/server"
+        }
     }
 }
