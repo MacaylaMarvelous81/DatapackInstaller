@@ -12,7 +12,7 @@
   },
   "license": "MIT",
   "icon": "assets/DatapackInstaller/icon.png",
-  "environment": "client",
+  "environment": "*",
   "entrypoints": {
     "client": [
       "ml.unbreakinggold.datapackinstaller.client.DatapackInstallerClient"
@@ -25,7 +25,7 @@
     "DatapackInstaller.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.14.21",
+    "fabricloader": ">=0.15.0",
     "minecraft": ">=1.20.5"
   }
 }
